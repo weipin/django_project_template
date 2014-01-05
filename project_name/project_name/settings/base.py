@@ -61,8 +61,8 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
 )
 
 
@@ -112,7 +112,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = '%s.urls' % SITE_NAME
 
 
-DJANGO_APPS = (
+INSTALLED_APPS = (
     # Default Django apps:
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,23 +121,16 @@ DJANGO_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Useful template tags:
-    # 'django.contrib.humanize',
-
-    # Admin panel and documentation:
+    # Admin
+    'grappelli',
     'django.contrib.admin',
     # 'django.contrib.admindocs',
-)
 
-THIRD_PARTY_APPS = (
-    # Database migration helpers:
+    # Third-party
     'south',
+    
+    # Project
 )
-
-LOCAL_APPS = (
-)
-
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 
 LOGGING = {
