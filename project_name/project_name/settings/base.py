@@ -1,19 +1,28 @@
-from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 
+from pathlib import Path
 
-DJANGO_ROOT = dirname(dirname(abspath(__file__)))
-
-SITE_ROOT = dirname(DJANGO_ROOT)
-
-SITE_NAME = basename(DJANGO_ROOT)
-
-path.append(DJANGO_ROOT)
-
+SITE_NAME = 'xxx'
+SITE_ID = 1
 
 DEBUG = False
-
 TEMPLATE_DEBUG = DEBUG
+
+PROJECT_DIR = Path(__file__).parents[2]
+MEDIA_ROOT = str(PROJECT_DIR / 'media')
+STATIC_ROOT = str(PROJECT_DIR / 'static')
+
+STATICFILES_DIRS = (
+)
+
+TEMPLATE_DIRS = (
+    str(PROJECT_DIR / 'templates'),
+)
+
+MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
+
+path.append(str(PROJECT_DIR / 'xxx'))
 
 
 ADMINS = (
@@ -36,46 +45,20 @@ DATABASES = {
 
 
 TIME_ZONE = 'America/Los_Angeles'
-
 LANGUAGE_CODE = 'en-us'
 
-SITE_ID = 1
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
-
-MEDIA_ROOT = normpath(join(SITE_ROOT, 'media'))
-
-MEDIA_URL = '/media/'
-
-STATIC_ROOT = normpath(join(SITE_ROOT, 'assets'))
-
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    normpath(join(SITE_ROOT, 'static')),
-)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'django.contrib.staticfiles.finders.FileSystemFinder',
 )
 
-
 SECRET_KEY = r"{{ secret_key }}"
 
-
 ALLOWED_HOSTS = []
-
-
-FIXTURE_DIRS = (
-    normpath(join(SITE_ROOT, 'fixtures')),
-)
-
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
@@ -111,7 +94,6 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = '%s.urls' % SITE_NAME
 
-
 INSTALLED_APPS = (
     # Default Django apps:
     'django.contrib.auth',
@@ -122,13 +104,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     # Admin
-    'grappelli',
     'django.contrib.admin',
     # 'django.contrib.admindocs',
 
-    # Third-party
-    'south',
-    
     # Project
 )
 

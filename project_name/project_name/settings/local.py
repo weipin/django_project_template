@@ -1,14 +1,11 @@
-from os.path import join, normpath
+import os
 
 from base import *
-
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 
 DATABASES = {
     'default': {
@@ -20,7 +17,6 @@ DATABASES = {
         'PORT': '',
     }
 }
-
 
 CACHES = {
     'default': {
