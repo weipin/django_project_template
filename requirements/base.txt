@@ -1,5 +1,4 @@
-Django==1.6.6
-South==0.8.4
-psycopg2==2.5.1
-django-grappelli==2.5.4
+Django
+psycopg2
+gunicorn
 

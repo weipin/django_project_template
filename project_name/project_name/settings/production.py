@@ -1,6 +1,6 @@
 from os import environ
 
-from base import *
+from .base import *
 
 from django.core.exceptions import ImproperlyConfigured
 
@@ -17,10 +17,26 @@ def get_env_setting(setting):
 ALLOWED_HOSTS = []
 
 
-DATABASES = {}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'my_database',
+        'USER': 'db_user',
+        'PASSWORD': 'xxxxx',
+        'HOST': 'xxxx.com',
+        'PORT': '',
+    }    
+}
 
 
-CACHES = {}
-
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
+}
 
 SECRET_KEY = get_env_setting('SECRET_KEY')
+
+INSTALLED_APPS += (
+    'gunicorn',
+)
